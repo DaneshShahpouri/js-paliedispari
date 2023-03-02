@@ -1,4 +1,4 @@
-// Palindroma
+// Palindroma--------------------------------------------------------------------
 
 // -assegnare variabile a input
 // -Dividere in array le parole
@@ -13,11 +13,14 @@ const palindromaInputElement = document.getElementById("palindromo-user-input");
 const palindromaBtnCheck = document.getElementById("ckeck-palindromo");
 const palindromaOutput = document.getElementById("palindromo-answer");
 
-//console.log(parolaInvertita("ciao come stai"))
-let debugWord = "ciao come stai?";
-createArraywords(debugWord)
-console.log(isPalindroma("anna"))
 
+
+
+
+//Stampa a schermo un messaggio
+function printP(message){
+    palindromaOutput.innerHTML = message
+}
 
 //Confronta le parole e restituisce un valore booleano se l'input è palindromo
 /**
@@ -45,6 +48,8 @@ function createArraywords(inputPhrase){
     let arrayWords = [];
     if(inputPhrase.includes(" ")){
        arrayWords = inputPhrase.split(" ");
+    }else{
+        arrayWords=[inputPhrase]
     }
 
     return arrayWords
@@ -69,3 +74,35 @@ function parolaInvertita(inputWord){
     
     return invertWord
 } 
+
+
+palindromaBtnCheck.addEventListener('click', function(){
+
+    printP("");
+
+    let inputPhrase = palindromaInputElement.value;
+    //Check - console.log(inputPhrase);
+
+    if (!isNaN(inputPhrase) || inputPhrase == "" || inputPhrase.length <= 1){
+        printP("Scrivi una frase o una parola")
+    } else {
+
+        let arrWords = createArraywords(inputPhrase);
+        //Check - console.log(arrWords)
+
+        for(let i = 0; i < arrWords.length; i++){
+            //console.log(arrWords[i])
+            if(isPalindroma(arrWords[i])){
+                
+                printP(palindromaOutput.innerHTML + `${arrWords[i]} è palindroma` + "<br>")
+
+            }else{
+                printP(palindromaOutput.innerHTML +  `${arrWords[i]} non è palindroma` + "<br>")
+            }
+
+        }
+
+    }
+})
+
+// Palindroma--------------------------------------------------------------------
