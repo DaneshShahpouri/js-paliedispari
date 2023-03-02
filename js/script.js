@@ -106,3 +106,46 @@ palindromaBtnCheck.addEventListener('click', function(){
 })
 
 // Palindroma--------------------------------------------------------------------
+
+// Pari Dispari------------------------------------------------------------------
+const inputNumber = document.getElementById("numero");
+const inputScelta = document.getElementById("pari-dispari");
+const btnPlay = document.getElementById("btn-play");
+let dispariOutput = document.getElementById("dispari-output");
+
+
+
+//Genera un numero random tra il "min" e il "max"
+function generaNumeroRandom(min, max){
+    let random = Math.floor(Math.random() * (max - min + 1) + min);
+    return random
+}
+
+function somma(number1, number2){
+    let somma = 0;
+    somma =parseInt(number1) + parseInt(number2);
+
+    return somma
+}
+
+btnPlay.addEventListener('click', function(){
+    let inputUtenteScelta = inputScelta.value; 
+    let inputUtenteNumero = inputNumber.value; 
+    let pcNumber = generaNumeroRandom(1, 5);
+    let result = somma(inputUtenteNumero, pcNumber);
+
+    dispariOutput.innerText = "";
+
+    if((inputUtenteScelta === "pari" && result %2 == 0) || (inputUtenteScelta === "dispari" && result %2 != 0)){
+        dispariOutput.innerHTML = "Hai vinto!<br> il pc ha lanciato " + pcNumber + ", tu hai scelto " + inputUtenteNumero + ", e la somma è: " + result
+    }else{
+
+        dispariOutput.innerHTML = "Hai perso!<br> il pc ha lanciato " + pcNumber + ", tu hai scelto " + inputUtenteNumero + ", e la somma è: " + result
+    }
+
+    
+})
+
+
+        
+    
